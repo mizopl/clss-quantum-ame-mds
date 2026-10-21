@@ -23,14 +23,22 @@ The script checks the SHA-256 integrity of all 21 certificates, verifies symmetr
 
 ## Summary of Results
 
-### 1. Purity Audit of `[[15, 0, 8]]_5` and `[[15, 0, 8]]_7` & Explicit Pure Replacement for $\mathrm{AME}(15, 7)$
+### 1. Audit of `codetables.de` `[[15, 0, 8]]_5` and `[[15, 0, 8]]_7` & Explicit Pure Replacement for $\mathrm{AME}(15, 7)$
 
-For a 1-dimensional stabilizer state ($K = q^0 = 1$), there are no nontrivial logical cosets, so the minimum distance coincides strictly with the pure distance ($d = d_{\mathrm{pure}}$). Any stabilizer element of weight $w < \lfloor n/2 \rfloor + 1$ induces a singular $\lfloor n/2 \rfloor$-party reduced density matrix.
+On `https://huberfe.github.io/ame`, both $\mathrm{AME}(15, 5)$ and $\mathrm{AME}(15, 7)$ are marked `Yes (Stab)` citing `codetables.de`. However, inspecting the explicit 15-row stabilizer matrices on `codetables.de` shows that neither matrix defines an $\mathrm{AME}$ state (which requires minimum stabilizer weight $d = \lfloor 15/2 \rfloor + 1 = 8$):
 
-- **`[[15, 0, 8]]_5` (impure):** A weight-distribution audit of the cyclic stabilizer code derived from the $[15, 7, 8]_5$ BCH code shows $d_{\mathrm{pure}} = 6 < 8$ ($276$ weight-6 and $2,940$ weight-7 stabilizer elements). Exhaustive backtracking over all $5^7 = 78,125$ symmetric circulant graph states over $\mathbb{F}_5$ shows that no circulant graph state achieves $\mathrm{AME}(15, 5)$ (minimum $630 / 6,435$ singular cuts). Thus $\mathrm{AME}(15, 5)$ remains open.
-- **`[[15, 0, 8]]_7` (impure BCH replaced by pure circulant graph state):** The tabulated cyclic BCH stabilizer code has $d_{\mathrm{pure}} = 7 < 8$. We construct an explicit pure symmetric circulant graph state over $\mathbb{F}_7$ (`certificates/ame_15_7_pure_circulant_certificate.json`) with first row:
-  $$r_0 = [0, 1, 1, 2, 1, 4, 6, 4, 4, 6, 4, 1, 2, 1, 1] \pmod 7$$
-  All $\binom{15}{7} = 6,435$ bipartite $7 \times 8$ submatrices ($429$ cyclic orbits) have full rank $7$ over $\mathbb{F}_7$.
+- **`[[15, 0, 8]]_5` (`http://www.codetables.de/QECC/QECC.php?q=25&n=15&k=0`):** Constructed in `codetables.de` by puncturing `[[17, 0, 9]]_5` at two coordinates `{16, 17}` (projecting onto $Z_{16} = Z_{17} = 0$). Because puncturing two coordinates can reduce weight by $2$, **Row 10** of the printed stabilizer matrix (`Row 10 + 3 * Row 17` of `[[17, 0, 9]]_5`, which has $(X_{16}, X_{17} \mid Z_{16}, Z_{17}) = (4, 2 \mid 0, 0)$):
+  ```text
+  [0 0 0 0 0 0 0 0 3 0 0 2 2 2 4|0 0 0 0 1 0 0 0 0 1 0 0 0 4 0]
+  ```
+  is supported on only **7** coordinates $\{5, 9, 10, 12, 13, 14, 15\}$ ($g_{10} = Z_5 X_9^3 Z_{10} X_{12}^2 X_{13}^2 (X^2 Z^4)_{14} X_{15}^4$, symplectic weight **$7 < 8$**). Consequently, the 7-party reduced density matrix on $S = \{5, 9, 10, 12, 13, 14, 15\}$ is rank-deficient ($190 / 6,435$ 7-party cuts have rank $14 < 15$), so this code is actually a `[[15, 0, 7]]_5` state (`6`-uniform, not $7$-uniform). Exhaustive backtracking over all $5^7 = 78,125$ symmetric 15-circulant and bordered 14-circulant graph states over $\mathbb{F}_5$ shows minimum $105 / 6,435$ singular cuts.
+- **`[[15, 0, 8]]_7` (`http://www.codetables.de/QECC/QECC.php?q=49&n=15&k=0`):** In the printed 15-row stabilizer matrix on `codetables.de`, Rows 1–14 have `0` in column 15 (both left and right of `|`), and **Row 15** is:
+  ```text
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1|0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  ```
+  which is the **weight-1** operator $X_{15}$ supported solely on coordinate 15 ($|\psi\rangle = |\mathrm{AME}(14, 7)\rangle_{1..14} \otimes |+\rangle_{15}$, causing $3,003 / 6,435$ 7-party cuts to have rank $14 < 15$). We replace this with an explicit symmetric 15-circulant graph state over $\mathbb{F}_7$ (`certificates/ame_15_7_pure_circulant_certificate.json`) with first row:
+  $$r_0 = [0, 1, 5, 4, 2, 1, 0, 0, 0, 0, 1, 2, 4, 5, 1] \pmod 7$$
+  for which all $\binom{15}{7} = 6,435$ bipartite $8 \times 7$ submatrices ($429$ cyclic orbits) have full rank $7$ over $\mathbb{F}_7$ ($d = 8$).
 
 ### 2. Pure Quantum MDS Code `[[13, 1, 7]]_5` (Improving `codetables.de` $d = 6 \to 7$)
 
