@@ -79,3 +79,10 @@ Instead of large-scale evolutionary token sampling, the discovery loop enforces 
 3. **Independent Verification Gate:** Every candidate certificate is verified from scratch by an independent zero-dependency script prior to acceptance.
 
 See [`TECHNICAL_DOSSIER.md`](TECHNICAL_DOSSIER.md) for the LaTeX summary table and full mathematical details.
+
+---
+
+## Acknowledgments
+
+We thank **Pliny (`@elder-plinius`)** for creating and curating the **[V3R1T4S](https://github.com/elder-plinius/V3R1T4S)** open-problems benchmark (`known-unknowns/physics/ame-states-open-cells-huber-table.md`), which directly catalyzed this investigation, and **Felix Huber**, **Nikolai Wyderka**, and **Markus Grassl** for maintaining the online tables of AME states and linear/quantum error-correcting codes.
+
