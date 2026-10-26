@@ -1,5 +1,8 @@
 # Explicit Constructions and Purity Audit for Quantum AME States ($n \le 20$) and MDS Codes
 
+> **🌟 Part of the [`mizopl/we-star` (`We*`)](https://github.com/mizopl/we-star) Autonomous Scientific Discovery Project:**
+> This standalone verification repository is one of 39 machine-verified packages produced by [**`mizopl/we-star`** (`We* = human + AI + autonomous 3-skeptic verification loop`)](https://github.com/mizopl/we-star) on a single 16 GB Apple M1 laptop. Visit [**`github.com/mizopl/we-star`**](https://github.com/mizopl/we-star) for the complete architecture, constitution, and master table of results across 29 open problems.
+
 This repository contains 21 machine-verified JSON certificates (`certificates/*.json`) and a standalone, zero-dependency Python 3 verification script (`verify_all_ame_submissions.py`) for new and repaired entries in:
 
 - **Table of AME and $k$-Uniform States** ([tp.nt.uni-siegen.de/ame/table.html](https://tp.nt.uni-siegen.de/ame/table.html) / [huberfe.github.io/ame](https://huberfe.github.io/ame), maintained by F. Huber and N. Wyderka)
