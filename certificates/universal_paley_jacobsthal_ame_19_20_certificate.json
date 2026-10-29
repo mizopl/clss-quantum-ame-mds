@@ -1,6 +1,6 @@
 {
   "theorem": "Universal Skew-Jacobsthal Q_19 (n=19) and Paley Tournament C_20 (n=20) MDS / Orthogonal Stabilizer Theorem over Z",
-  "authors": "@mizopl & Gemini-CLSS (PROOFER v15)",
+  "authors": "@mizopl & Gemini-CLSS",
   "date": "2026-10-21",
   "Q19_first_row_over_Z": [
     0,
